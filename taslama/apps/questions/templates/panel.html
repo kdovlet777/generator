@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>Панель управления</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  </head>
+  <body style="background-image: url('{% static 'pattern.png' %}' );">
+    
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-body border-bottom shadow-sm">
+  <p class="h5 my-0 me-md-auto fw-normal">#Сгенерируй</p>
+  <nav class="my-2 my-md-0 me-md-3">
+    <a class="p-2 text-dark" href="#">Информация</a>
+    <a class="p-2 text-dark" href="#">Отзыв</a>
+  </nav>
+  <a class="btn btn-outline-primary" href="{% url 'index' %}">Главная</a>
+</header>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+  <h1 class="display-4 m-3">Список электронных почт: {{emails_count}}</h1>
+  {% if emails_list %}
+    {% for email in emails_list %}
+    <div class="card">
+    <div class="card-body mb-2" style="border-color: black; border:solid; border-width: 1px; border-radius: 10px; ">
+    {{email.email}}
+    <a href="{% url 'delete' email.id %}" style="float: right;"><i class="fas fa-trash"></i></a>
+    </div>
+    </div>
+    {% endfor %}
+  {% else %}
+  <p class="m-3">Пока электронных почт не добавлено, нажмите "Добавить", чтобы добавить почту</p>
+  {% endif %}
+    </div>
+    <div class="col-sm-4">
+      <form method="POST">
+        {% csrf_token %}
+  <div class="form-group pt-4">
+    <label class="m-2" style="font-size: 32px;" for="exampleFormControlInput1">Электронная почта:</label>
+    <input type="email" class="form-control m-2" name="email" id="exampleFormControlInput1" placeholder="ivanov@example.com">
+  </div>
+  <a href="">
+  <button class="btn btn-primary m-2" style="width: 100%;">Добавить</button>
+</a>
+  </form>
+    </div>
+
+  </div>
+</div>
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+  
+  </footer>
+</main>
+
+<script src="https://kit.fontawesome.com/886f14f963.js" crossorigin="anonymous"></script>
+  </body>
+</html>
