@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Question, Email
+from django.contrib import messages
 from django.core.mail import send_mail
 import random
 
@@ -67,14 +68,18 @@ def index(request):
 def panel(request):
 	if request.method == 'POST':
 		email = Email.objects.create(email = request.POST['email'])
+		created = email.email
 		email.save()
+		messages.info(request, f'Почта {created} добавлена успешно!')
 	emails_list = Email.objects.all()
 	emails_count = emails_list.count()
 	return render(request, 'panel.html', {'emails_list':emails_list, 'emails_count':emails_count})
 
 def delete(request, email_id):
+	deleted = Email.objects.get(id = email_id)
 	Email.objects.filter(id=email_id).delete()
 	emails_list = Email.objects.all()
+	messages.info(request, f'Почта {deleted.email} удалена успешно!')
 	return render(request, 'panel.html', {'emails_list':emails_list})
 
 def send_mails(request):
@@ -97,5 +102,6 @@ def send_mails(request):
 	    [e_array[i]],
 	    fail_silently=False,
 		)
+	messages.info(request, 'Все задачи успешны отправлены на почты')
 	return render(request, 'base.html')
 
