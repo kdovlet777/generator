@@ -105,3 +105,5 @@ def send_mails(request):
 	messages.info(request, 'Все задачи успешны отправлены на почты')
 	return render(request, 'base.html')
 
+def info(request):
+	return render(request, 'info.html')
