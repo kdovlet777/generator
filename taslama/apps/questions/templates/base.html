@@ -31,8 +31,10 @@
       </div>
     {% endfor %}
 {% endif %}
-    <h1 class="display-4">Генератор экзаминиционных вопросов</h1>
-    <h6 class="lead"><b>Прежде чем начать работу, пожалуйста ознакомьтесь с инструкцией</b></h6>
+    <div class="card">
+    <h1 class="display-4">Генератор экзамениционных вопросов</h1>
+    <h6 class="lead"><b>Прежде чем начать работу, пожалуйста, ознакомьтесь с инструкцией</b></h6>
+    </div>
   </div>
 
   <div class="mb-3 text-center">
@@ -43,12 +45,13 @@
     	<button class="btn btn-primary mt-2">Сгенерировать</button>
     </form>
     {% if question.generated %}
+    <div class="card p-2">
     {{question.generated | linebreaks}}
     <a href="{% url 'sendemail' %}">
      <button class="btn btn-success mt-2">Отправить</button>
    </a>
 
-   
+    </div>
     {% endif %}
   </div>
 
