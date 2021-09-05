@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Question, Email
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.http import HttpResponseRedirect
 import random
 
 def index(request):
@@ -80,7 +81,7 @@ def delete(request, email_id):
 	Email.objects.filter(id=email_id).delete()
 	emails_list = Email.objects.all()
 	messages.info(request, f'Почта {deleted.email} удалена успешно!')
-	return render(request, 'panel.html', {'emails_list':emails_list})
+	return HttpResponseRedirect("/panel/")
 
 def send_mails(request):
 	i = 0
@@ -103,7 +104,7 @@ def send_mails(request):
 	    fail_silently=False,
 		)
 	messages.info(request, 'Все задачи успешны отправлены на почты')
-	return render(request, 'base.html')
+	return HttpResponseRedirect("/")
 
 def info(request):
 	return render(request, 'info.html')

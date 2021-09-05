@@ -8,7 +8,11 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.80.0">
     <script src="https://kit.fontawesome.com/886f14f963.js" crossorigin="anonymous"></script>
+
+    <link href="{% static 'track.css' %}" rel="stylesheet" type='text/css'>
     <title>Генератор Вопросов</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap'><link rel="stylesheet" href="./style.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   </head>
@@ -33,7 +37,7 @@
 {% endif %}
     <div class="card">
     <h1 class="display-4">Генератор экзамениционных вопросов</h1>
-    <h6 class="lead"><b>Прежде чем начать работу, пожалуйста, ознакомьтесь с инструкцией</b></h6>
+    <h6 class="lead"><b>Прежде чем начать работу, пожалуйста, ознакомьтесь с инструкцией!</b></h6>
     </div>
   </div>
 
@@ -42,13 +46,33 @@
     	{% csrf_token %}
     	<label class="form-label">Введите вопрос</label>
     	<textarea name="text" class="form-control"></textarea>
-    	<button class="btn btn-primary mt-2">Сгенерировать</button>
+    	<button class="btn btn-primary mt-2">Сгенерировать <i class="fas fa-microchip"></i></button>
     </form>
     {% if question.generated %}
     <div class="card p-2">
     {{question.generated | linebreaks}}
     <a href="{% url 'sendemail' %}">
-     <button class="btn btn-success mt-2">Отправить</button>
+    <script text='javascript'>
+      await sleep(3000);
+    </script>
+    <button class="order"><span class="default">Отправить</span><span class="success">Order Placed
+    <svg viewbox="0 0 12 10">
+      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+    </svg></span>
+  <div class="box"></div>
+  <div class="truck">
+    <div class="back"></div>
+    <div class="front">
+      <div class="window"></div>
+    </div>
+    <div class="light top"></div>
+    <div class="light bottom"></div>
+  </div>
+  <div class="lines"></div>
+</button>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+      <script src="{% static 'track.js' %}"></script>
    </a>
 
     </div>
