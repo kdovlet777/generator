@@ -9,6 +9,12 @@
     <meta name="generator" content="Hugo 0.80.0">
     <title>Панель управления</title>
 
+       
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   </head>
   <body style="background-image: url('{% static 'pattern.png' %}' );">
@@ -21,8 +27,15 @@
   <a class="btn btn-outline-primary" href="{% url 'index' %}">Главная</a>
 </header>
  <div class="container card"> 
-   <h1>Инструкция для пользования</h1>
+   <h1 class="text text-primary p-1">Инструкция для пользования</h1>
    <p style="font-size: 24px;"> 
+    <!-- Custom fonts -->
+    <style>
+      *{ 
+       font-family: 'Rubik', sans-serif;
+       }
+     </style>
+     <!------------------->
     За основу мы взяли формулу a=b/c. И пользователь по своему усмотрению задает параметры.
     <br>
       Например:
@@ -33,6 +46,7 @@
        <br>  <b>3.</b> После того как вы ввели запрос, необходимо нажать "Сгенерировать";
        <br>  <b>4.</b> Для отправки заданий необходимо ввести почту обучающегося в "Панеле управления" и нажать «Отправить»;
        <br>  <b>5.</b> Отправка заданий для нескольких учеников будет происходить случайным образом;
+       <br> При нажатии на электронную почту, почта удаляется.
    </p>
  </div>
 

@@ -8,9 +8,6 @@
     --card-height: 10vh;
     --card-width: calc(var(--card-height) * 9);
   }
-  
-  
-
 .card1 {
     background: #ffffff;
     width: var(--card-width);
